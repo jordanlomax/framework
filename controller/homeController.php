@@ -1,7 +1,6 @@
 <?php
 
 
-
 # Include html header
 include(APP_VIEW . "/header.php");
 
