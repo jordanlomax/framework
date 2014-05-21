@@ -82,11 +82,19 @@ body {
 #loginbtn{
 	display:inline;
 	margin-left:550px;
+	position: relative;
 }
 
 #loginForm{
 
 }
+
+/*
+#loginul{
+	margin-left: 200px;
+	margin-top: -35px;
+}
+*/
 
 #logindiv{
 	display: none;

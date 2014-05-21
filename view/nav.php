@@ -2,9 +2,23 @@
       <!-- main navigation -->
       <div id="nav">
       <?php
-      print '<ul id="navbar">
-			<li class="navitem"><a class="navlink" href="?q=home">Home</a></li>
+	    if ($_SESSION["userId"])
+	    {
+	      //$home = $_SESSION["userId"];
+	    	$home = "Home";
+	    }
+	    else 
+	    {
+	      $home = "Home";
+	    }
+
+      	print '<ul id="navbar">
+			<li class="navitem"><a class="navlink" href="?q=home">'.$home.'</a></li>
+			<li class="navitem"><a class="navlink" href="?q=friends">Friends</a></li>
+			<li class="navitem"><a class="navlink" href="?q=friends">Friends</a></li>
+			<li class="navitem"><a class="navlink" href="?q=friends">Friends</a></li>
 			<li class="navitem"><a class="navlink" href="?q=friends">Friends</a></li>';
+
             if ($_SESSION["userId"])
             {
               print '<li id="loginbtn"><a href="index.php?q=auth&a=logout">Logout</a></li></ul>';
