@@ -14,8 +14,7 @@ function authCheck($array)
 
 function processAuth($array)
 {
-	$username = mysql_query("SELECT email FROM users WHERE email = " . $array["userId"],$dbh);
-	if($array["userId"] == $username)
+	if($array["userId"])
 	{
 		$_SESSION["userId"] = $array["userId"];
 		return true;
