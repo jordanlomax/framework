@@ -14,9 +14,6 @@
 
       	print '<ul id="navbar">
 			<li class="navitem"><a class="navlink" href="?q=home">'.$home.'</a></li>
-			<li class="navitem"><a class="navlink" href="?q=friends">Friends</a></li>
-			<li class="navitem"><a class="navlink" href="?q=friends">Friends</a></li>
-			<li class="navitem"><a class="navlink" href="?q=friends">Friends</a></li>
 			<li class="navitem"><a class="navlink" href="?q=friends">Friends</a></li>';
 
             if ($_SESSION["userId"])
