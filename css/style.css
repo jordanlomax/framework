@@ -21,21 +21,28 @@ body {
         position: 	static;
 	width: 	 	900px;
 	height: 	50px;
-        border: 	thin solid black;
+    border: 	thin solid black;
 }
 
 #subNav {
-        position: 	static;
+    position: 	static;
 	float: 		left;
-        width: 		200px;
+    width: 		200px;
 	height:		500px;
-        border: 	thin solid black;
+    border: 	thin solid black;
 }
 
 #page {
-        position: 	static;
-	float:		right;
-	width:  	696px;
+   	position: 	static;
+	margin-left: 200px;
+	width:  	700px;
+	height:		500px;
+	border: 	thin solid black;
+}
+
+#pageFullWidth {
+   	position: 	static;
+	width:  	900px;
 	height:		500px;
 	border: 	thin solid black;
 }
@@ -47,3 +54,89 @@ body {
         height: 	50px;
         border: 	thin solid black;
 }
+
+.navitem{
+	display: inline;
+	padding-top: 17px;
+	padding-bottom: 14px;
+	padding-left:20px;
+	padding-right:20px;
+}
+
+.navitem:hover{
+	background-color: #00FF66;
+	display: inline;
+	padding-top: 17px;
+	padding-bottom: 14px;
+	padding-left:20px;
+	padding-right:20px;
+}
+
+.navlink{
+	padding: inherit;
+	margin: inherit;
+}
+
+/*Pop-up login*/
+
+#loginbtn{
+	display:inline;
+	margin-left:550px;
+}
+
+#loginForm{
+
+}
+
+#logindiv{
+	display: none;
+	float:right;
+	position: absolute;
+	margin-left: 687px;
+	margin-top: -2px;
+	background: white;
+	border-color:black;
+	border-style: solid;
+	border-width: thin;
+}
+
+#loginformatting{
+	list-style-type: none;
+	padding-right: 30px;
+}
+
+#navbar{
+	margin-left: -40px;
+}
+
+/* login Styles
+div.login {
+	margin: 100px auto;
+	width:	300px;
+	border: thin solid black;
+	padding: 25px;
+}
+
+div.login label{
+	display:block;
+	float:left;
+	clear: left;
+	width:100px;
+
+}
+
+div.login input{
+}
+
+button#login{
+	display: block;
+	clear: both;
+	float: right;
+	margin-top: 25px 25px 0 0;
+}
+
+div#userArea{
+	float:right;
+	margin: 5px 5px 0 0;
+}
+*/
