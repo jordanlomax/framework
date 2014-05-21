@@ -14,13 +14,24 @@ function authCheck($array)
 
 function processAuth($array)
 {
-	if($array["userId"])
+	$username = mysql_escape_string($array["userId"]);
+
+	$sql = "SELECT * FROM users WHERE email = '" . $username . "'";
+	$res = mysql_query($sql);
+
+	$row = mysql_fetch_assoc($res);
+
+	if(!$row)
 	{
-		$_SESSION["userId"] = $array["userId"];
-		return true;
+		return false;
+	}
+	else if (md5($array["password"]) != $row["password"])
+	{
+		return false;
 	}
 	else
 	{
-		return false;
+		$_SESSION["userId"] = $array["userId"];
+		return true;
 	}
 }

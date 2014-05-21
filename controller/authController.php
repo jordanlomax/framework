@@ -23,6 +23,7 @@ switch ( $_GET["a"] ) {
     	}
     	else
     	{
+    		$formError = "Invalid Username or Password";
     		include(APP_VIEW . "/header.php");
     		include(APP_VIEW . "/nav.php");
         	include(APP_VIEW ."/auth/loginView.php" );
