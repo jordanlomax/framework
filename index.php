@@ -32,6 +32,10 @@ switch ($_GET["q"]) {
         include( APP_CONTROLLER . "/authController.php");
         break;
 
+    case "config":
+    	include( APP_CONTROLLER . "/configController.php");
+    	break;
+
     default:
         include( APP_CONTROLLER . "/homeController.php");
         break;

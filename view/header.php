@@ -8,7 +8,6 @@
     <![endif]-->
 
     <link href="css/style.css" media="all" rel="stylesheet" type="text/css" />
-    <script language="javascript" type="text/javascript" src="js/application.js"></script>
     <title>My Project</title />
   </head>
   <body>

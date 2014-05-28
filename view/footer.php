@@ -10,4 +10,5 @@
   	}
   	?>
   </body>
+  <script language="javascript" type="text/javascript" src="js/application.js"></script>
 </html>
