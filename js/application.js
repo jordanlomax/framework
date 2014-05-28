@@ -41,6 +41,13 @@ function formatValidate()
 	return check;
 }
 
+function updateAvatar()
+{
+	alert('loaded');
+	var path = document.getElementById('avatarFile').value;
+	alert(path);
+}
+
 function updateFields(about)
 {
 	alert(about);

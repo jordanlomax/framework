@@ -2,12 +2,14 @@
 
 function authCheck($array)
 {
-	if ($array["userId"])
+	if ($_SESSION["userData"] = md5("App Secure Key" . $_SERVER["REMOTE_ADDR"]))
 	{
 		return true;
 	}
 	else
 	{
+		$_SESSION = 0;
+		session_destroy();
 		return false;
 	}
 }
@@ -32,6 +34,7 @@ function processAuth($array)
 	else
 	{
 		$_SESSION["userId"] = $array["userId"];
+		$_SESSION["userData"] = md5("App Secure Key" . $_SERVER["REMOTE_ADDR"]);
 		return true;
 	}
 }
