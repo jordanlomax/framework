@@ -1,9 +1,7 @@
       <!-- page content -->
       <div id="pageFullWidth">
       <?php
-      	  //include("saveChanges.php");
-      	  include(APP_MODEL."/configModel.php");
-
+      
       	  print '
       	  		<div>
       	  		<form method="post" enctype="multipart/form-data">

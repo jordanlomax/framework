@@ -7,6 +7,9 @@ include(APP_VIEW . "/header.php");
 # Include main navigation
 include(APP_VIEW . "/nav.php");
 
+//include("saveChanges.php");
+include(APP_MODEL."/configModel.php");
+
 
 switch ( $_GET["a"] ) {
 

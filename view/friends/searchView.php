@@ -7,12 +7,14 @@
       			<input type="button" id="nameSubmit" value="Search" onclick="getSearch()">
       		</form>
       	</div>
-      </div>
-
       <?php
-	/*      if (isset($_POST['nameSubmit']))
-	      {
-	      	searchFriends($_POST['nameSearch']);
-	      }*/
+/*            foreach ($data as $key => $value) 
+            {
+                  print $data["firstname"].' '.$data["lastname"].'<br/>';
+            }*/
+            print '<pre>';
+            print_r($data);
+            print '</pre>';
       ?>
+      </div>
       <!-- End page content -->

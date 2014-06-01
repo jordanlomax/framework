@@ -41,6 +41,40 @@ function formatValidate()
 	return check;
 }
 
+function getSearch()
+{
+	var name = document.getElementById('nameSearch').value;
+	if (name != '')
+	{
+		var startPos = name.indexOf(" ");
+		if (startPos == -1)
+		{
+			var first = name.substr(0);
+			if (first == "")
+			{
+				first = "";
+			}
+			var last = "";
+		}
+		else
+		{
+			var first = name.substr(0,startPos);
+			var last = name.substr(startPos+1);
+		}
+
+		location.href = "?q=friends&a=search&first=" + first + "&last=" + last;
+	}
+	else
+	{
+		alert("Please enter a name");
+	}
+}
+
+
+/*---------------------------------------------------------------------------------------------*/
+
+
+
 function updateAvatar()
 {
 	alert('loaded');
