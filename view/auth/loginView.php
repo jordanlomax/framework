@@ -1,6 +1,6 @@
       <!-- page content -->
       <div id="pageFullWidth">
-      	<div id="loginError"></div>
+      	<div id="loginError">
       	<?php
       	if ($formError != "")
       	{
@@ -34,5 +34,6 @@
 	  		</div>';
       	}
       	?>
+      	</div>
       </div>
       <!-- End page content -->

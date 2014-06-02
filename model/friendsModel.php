@@ -35,16 +35,21 @@ function displaySearch()
 	}
 	else if ($first == '' && $last != '')
 	{
-	    $sql = mysql_query("SELECT userID, firstname, lastname FROM users WHERE  lastname IN ('".$last."') AND email != '" . $_SESSION["userId"] . "'");
+	    $sql = mysql_query("SELECT userID, firstname, lastname FROM users WHERE  lastname IN ('".$last."') AND email != '" . $_SESSION["userId"] . "
+	    					' AND userId NOT IN (SELECT userFriend FROM friends WHERE userID = 
+							(SELECT userID FROM users WHERE email = '".$_SESSION['userId']."'));");
 	}
 	else if ($first != '' && $last == '')
 	{
-	    $sql = mysql_query("SELECT userID, firstname, lastname FROM users WHERE firstname IN ('".$first."') AND email != '" . $_SESSION["userId"] . "'");
+	    $sql = mysql_query("SELECT userID, firstname, lastname FROM users WHERE firstname IN ('".$first."') AND email != '" . $_SESSION["userId"] . "
+	    					' AND userId NOT IN (SELECT userFriend FROM friends WHERE userID = 
+							(SELECT userID FROM users WHERE email = '".$_SESSION['userId']."'));");
 	}
 	else
 	{
 	    $sql = mysql_query("SELECT userID, firstname, lastname FROM users WHERE firstname IN ('".$first."') AND lastname IN ('".$last."') AND email != '" .
-	    $_SESSION["userId"] . "'");  
+	    					$_SESSION["userId"] . " 'AND userId NOT IN (SELECT userFriend FROM friends WHERE userID = 
+							(SELECT userID FROM users WHERE email = '".$_SESSION['userId']."'));");  
 	}
 
 	$data = array();
@@ -77,4 +82,68 @@ function addFriend()
 	}
 }
 
+function displayFriends()
+{
+	$sql = mysql_query("SELECT userID, firstname, lastname FROM USERS WHERE userID IN 
+						(SELECT userFriend FROM friends WHERE userID = 
+							(SELECT userID FROM users WHERE email = '".$_SESSION['userId']."'));");
+
+	$data = array();
+	$i = 0;
+
+	while( $row = mysql_fetch_assoc($sql) ) 
+	{
+		$data[$i]["userID"] = $row["userID"];
+		$data[$i]["firstname"] = $row["firstname"];
+		$data[$i]["lastname"] = $row["lastname"];
+
+		$i++;
+    }
+
+    return $data;
+}
+
+function showFriends($array)
+{
+	$data = $array;
+
+  	for ($i = 0; $i<count($data); $i++)
+    {
+    	print '<a href="?q=friends&a=profile&v='.$data[$i]["userID"].'">'.$data[$i]["firstname"].' '.$data[$i]["lastname"].'</a><br/>';
+    }
+}
+
+function showSearch($array)
+{
+	$data = $array;
+
+	print '<form>';
+	for ($i = 0; $i<count($data); $i++)
+	{
+		print $data[$i]["firstname"].' '.$data[$i]["lastname"].'<br/>';
+		print '<input type="button" name="add" value="Add '.$data[$i]["firstname"].' '.$data[$i]["lastname"].
+		'" onclick="addFriend('.$data[$i]["userID"].')"/>';
+		print '<br/>';
+	}
+	print '</form>';
+}
+
+function displayProfile()
+{
+	$sqluser = mysql_query("SELECT firstname, lastname FROM users WHERE userID = ".$_GET["v"]);
+	$rowuser = mysql_fetch_assoc($sqluser);
+	$sqlprofile = mysql_query("SELECT * FROM content WHERE userID = ".$_GET["v"]); 
+	$rowprofile = mysql_fetch_row($sqlprofile);
+
+	print '<h3>'.$rowuser["firstname"].' '.$rowuser["lastname"].'</h3>';
+
+	if ($rowprofile[2] == true)
+	{
+		print '<img id="avatar" src="'.APP_IMG.'/'.$rowprofile[1].'">';
+	}
+	if ($rowprofile[4] == true)
+	{
+		print '<pre id="about">' . $rowprofile[3] . '</pre>';
+	}
+}
 ?>

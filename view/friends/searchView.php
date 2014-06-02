@@ -19,16 +19,7 @@
                   print '<input type="submit" name="add" value="Add "'.$data["firstname"].' '.$data["lastname"]'"/>';
                   print '</form>';
             }*/
-            print '<form>';
-            for ($i = 0; $i<count($data); $i++)
-            {
-                  print $data[$i]["firstname"].' '.$data[$i]["lastname"].'<br/>';
-                  print '<input type="button" name="add" value="Add '.$data[$i]["firstname"].' '.$data[$i]["lastname"].
-                  '" onclick="addFriend('.$data[$i]["userID"].')"/>';
-                  print '<br/>';
-            }
-            print '</form>';
-            print_r($data);
+            showSearch($data);
 
       ?>
       </div>

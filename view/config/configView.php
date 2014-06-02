@@ -27,7 +27,8 @@
       	  		{
       	  			if ($_FILES['avatarFile']['name'] != "")
       	  			{
-       	  				move_uploaded_file($_FILES["avatarFile"]["tmp_name"], 'img/'. $_FILES["avatarFile"]["name"]);
+       	  				//move_uploaded_file($_FILES["avatarFile"]["tmp_name"], 'img/'. $_FILES["avatarFile"]["name"]);
+       	  				updateAvatar();
       	  			}
       	  			else
       	  			{

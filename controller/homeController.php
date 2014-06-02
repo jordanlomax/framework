@@ -7,6 +7,7 @@ include(APP_VIEW . "/header.php");
 # Include main navigation
 include(APP_VIEW . "/nav.php");
 
+include(APP_MODEL . "/homeModel.php");
 
 switch ( $_GET["a"] ) {
 

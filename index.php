@@ -13,7 +13,6 @@ if("processAuth" != $_GET["a"] && !authCheck($_SESSION))
 {
 	$_GET["q"] = "auth";
 	$_GET["a"] = "login";
-
 }
 
 
