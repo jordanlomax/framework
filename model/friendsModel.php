@@ -35,15 +35,15 @@ function displaySearch()
 	}
 	else if ($first == '' && $last != '')
 	{
-	    $sql = mysql_query("SELECT firstname, lastname FROM users WHERE  lastname IN ('".$last."') AND email != '" . $_SESSION["userId"] . "'");
+	    $sql = mysql_query("SELECT userID, firstname, lastname FROM users WHERE  lastname IN ('".$last."') AND email != '" . $_SESSION["userId"] . "'");
 	}
 	else if ($first != '' && $last == '')
 	{
-	    $sql = mysql_query("SELECT firstname, lastname FROM users WHERE firstname IN ('".$first."') AND email != '" . $_SESSION["userId"] . "'");
+	    $sql = mysql_query("SELECT userID, firstname, lastname FROM users WHERE firstname IN ('".$first."') AND email != '" . $_SESSION["userId"] . "'");
 	}
 	else
 	{
-	    $sql = mysql_query("SELECT firstname, lastname FROM users WHERE firstname IN ('".$first."') AND lastname IN ('".$last."') AND email != '" .
+	    $sql = mysql_query("SELECT userID, firstname, lastname FROM users WHERE firstname IN ('".$first."') AND lastname IN ('".$last."') AND email != '" .
 	    $_SESSION["userId"] . "'");  
 	}
 
@@ -55,6 +55,7 @@ function displaySearch()
 
 		while( $row = mysql_fetch_assoc($sql) ) 
 		{
+			$data[$i]["userID"] = $row["userID"];
 			$data[$i]["firstname"] = $row["firstname"];
 			$data[$i]["lastname"] = $row["lastname"];
 
@@ -65,6 +66,15 @@ function displaySearch()
 
 	return $data;
 
+}
+
+function addFriend()
+{
+	$friend = $_GET["v"];
+	if ($friend != "")
+	{
+		$sql = mysql_query("INSERT INTO friends VALUES ((SELECT userID FROM USERS WHERE email = '".$_SESSION["userId"]."'), ".$friend.");");
+	}
 }
 
 ?>

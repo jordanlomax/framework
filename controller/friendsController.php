@@ -21,6 +21,11 @@ switch ( $_GET["a"] ) {
     	include( APP_VIEW ."/friends/searchView.php" );
         break;
 
+    case "add":
+		addFriend();
+        include( APP_VIEW ."/friends/friendsView.php" );
+        break;
+
     default:
         //include( APP_VIEW ."/friends/friendsSubNav.php" );
         include( APP_VIEW ."/friends/friendsView.php" );

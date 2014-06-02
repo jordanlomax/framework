@@ -12,9 +12,24 @@
             {
                   print $data["firstname"].' '.$data["lastname"].'<br/>';
             }*/
-            print '<pre>';
+/*            foreach ($data as $key => $value) 
+            {
+                  print '<form>';
+                  print $data["firstname"].' '.$data["lastname"].'<br/>';
+                  print '<input type="submit" name="add" value="Add "'.$data["firstname"].' '.$data["lastname"]'"/>';
+                  print '</form>';
+            }*/
+            print '<form>';
+            for ($i = 0; $i<count($data); $i++)
+            {
+                  print $data[$i]["firstname"].' '.$data[$i]["lastname"].'<br/>';
+                  print '<input type="button" name="add" value="Add '.$data[$i]["firstname"].' '.$data[$i]["lastname"].
+                  '" onclick="addFriend('.$data[$i]["userID"].')"/>';
+                  print '<br/>';
+            }
+            print '</form>';
             print_r($data);
-            print '</pre>';
+
       ?>
       </div>
       <!-- End page content -->

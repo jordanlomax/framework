@@ -70,6 +70,11 @@ function getSearch()
 	}
 }
 
+function addFriend(userid)
+{
+	var id = userid;
+	location.href = "?q=friends&a=add&v="+id;
+}
 
 /*---------------------------------------------------------------------------------------------*/
 
