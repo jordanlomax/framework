@@ -130,20 +130,30 @@ function showSearch($array)
 
 function displayProfile()
 {
-	$sqluser = mysql_query("SELECT firstname, lastname FROM users WHERE userID = ".$_GET["v"]);
-	$rowuser = mysql_fetch_assoc($sqluser);
-	$sqlprofile = mysql_query("SELECT * FROM content WHERE userID = ".$_GET["v"]); 
-	$rowprofile = mysql_fetch_row($sqlprofile);
+	$friendAdded = mysql_query("SELECT email FROM users WHERE userID IN (SELECT userID FROM friends WHERE userFriend = ".$_GET["v"].");");
+	$rowCheck = mysql_fetch_assoc($friendAdded);
 
-	print '<h3>'.$rowuser["firstname"].' '.$rowuser["lastname"].'</h3>';
-
-	if ($rowprofile[2] == true)
+	if ($rowCheck["email"] == $_SESSION["userId"])
 	{
-		print '<img id="avatar" src="'.APP_IMG.'/'.$rowprofile[1].'">';
+		$sqluser = mysql_query("SELECT firstname, lastname FROM users WHERE userID = ".$_GET["v"]);
+		$rowuser = mysql_fetch_assoc($sqluser);
+		$sqlprofile = mysql_query("SELECT * FROM content WHERE userID = ".$_GET["v"]); 
+		$rowprofile = mysql_fetch_row($sqlprofile);
+
+		print '<h3>'.$rowuser["firstname"].' '.$rowuser["lastname"].'</h3>';
+
+		if ($rowprofile[2] == true)
+		{
+			print '<img id="avatar" src="'.APP_IMG.'/'.$rowprofile[1].'">';
+		}
+		if ($rowprofile[4] == true)
+		{
+			print '<pre id="about">' . $rowprofile[3] . '</pre>';
+		}
 	}
-	if ($rowprofile[4] == true)
+	else
 	{
-		print '<pre id="about">' . $rowprofile[3] . '</pre>';
+		print '<h3>Sorry! You\'re not friends with this person.';
 	}
 }
 ?>

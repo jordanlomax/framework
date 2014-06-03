@@ -26,20 +26,51 @@ function formatValidate(emailid, errorid)
 	var email = document.getElementById(emailid).value;
 
 	var regex = /^[\w.-]+@[\w.-]+\.[A-Za-z]{2,6}$/;
-	var check = false;
+	var check = true;
 
-	if (regex.test(email) == true)
+	if (regex.test(email) == false)
 	{
-		check = true;
-	}
-
-	if (check == false)
-	{
-/*		document.getElementById('formatError').style.color = 'red';
-		var error = document.getElementById('formatError');*/
+		check = false;
 		document.getElementById(errorid).style.color = 'red';
 		var error = document.getElementById(errorid);		
 		error.innerHTML = 'Invalid Email';
+		return check;
+	}
+
+	if (emailid == 'signupEmail')
+	{
+		var fname = document.getElementById('first').value;
+		var lname = document.getElementById('last').value;
+		var pass = document.getElementById('signupPassword').value;
+
+
+		var nametest = /^\S+/;
+
+		if (nametest.test(fname) == false)
+		{
+			check = false;
+			document.getElementById(errorid).style.color = 'red';
+			var error = document.getElementById(errorid);		
+			error.innerHTML = 'First name must be one word';
+			return check;
+		}
+		else if (nametest.test(lname) == false)
+		{
+			check = false;
+			document.getElementById(errorid).style.color = 'red';
+			var error = document.getElementById(errorid);		
+			error.innerHTML = 'Last name must be one word';
+			return check;
+		}
+		else if (nametest.test(pass) == false)
+		{
+			check = false;
+			document.getElementById(errorid).style.color = 'red';
+			var error = document.getElementById(errorid);		
+			error.innerHTML = 'Invalid Password';
+			return check;
+		}
+
 	}
 
 	return check;
