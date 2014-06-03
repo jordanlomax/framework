@@ -33,8 +33,8 @@
 	    if (!$_SESSION["userId"] && $formError == "")
 	    {
 		  print '<div id="logindiv">
-	      		<form id="loginForm" method="post" onSubmit="return formatValidate()" action="index.php?q=auth&a=processAuth">
-		  		<ul id="loginformatting">
+	      		<form id="loginForm" method="post" onSubmit="return formatValidate(\'userId\',\'formatError\')" action="index.php?q=auth&a=processAuth">
+		  		<ul class="loginformatting">
 		  		<li><p id="formatError"></br></p></li>
 		  		<li><label>Email:</label></li>
 		  		<li><input type="text" id="userId" name="userId"/></li>

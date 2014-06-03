@@ -106,15 +106,27 @@ body {
 }
 
 #logindivFull{
-	margin-left: 275px;
-	margin-top: 100px;
-	border: solid black;
+/*	margin-left: 275px;
+	margin-top: 100px;*/
+	float:left;
+	border: 1px solid black;
 	width: 300px;
 	display: inline-block;
 	padding: 25px;
 }
 
-#loginformatting{
+#signupdiv{
+/*	margin-left: 275px;
+	margin-top: 100px;*/
+	float:left;
+	border: 1px solid black;
+	width: 300px;
+	display: inline-block;
+	padding: 25px;
+}
+
+
+.loginformatting{
 	list-style-type: none;
 	padding-right: 30px;
 }

@@ -17,11 +17,13 @@ function loginShow()
 }
 
 
-function formatValidate()
+function formatValidate(emailid, errorid)
 {
 	//var form = document.getElementById("loginForm");
 
-	var email = document.getElementById("userId").value;
+	// var email = document.getElementById("userId").value;
+
+	var email = document.getElementById(emailid).value;
 
 	var regex = /^[\w.-]+@[\w.-]+\.[A-Za-z]{2,6}$/;
 	var check = false;
@@ -33,8 +35,10 @@ function formatValidate()
 
 	if (check == false)
 	{
-		document.getElementById('formatError').style.color = 'red';
-		var error = document.getElementById('formatError');
+/*		document.getElementById('formatError').style.color = 'red';
+		var error = document.getElementById('formatError');*/
+		document.getElementById(errorid).style.color = 'red';
+		var error = document.getElementById(errorid);		
 		error.innerHTML = 'Invalid Email';
 	}
 

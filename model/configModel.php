@@ -42,31 +42,23 @@ function updateAvatar()
 
 	if ($_FILES['avatarFile']['name'] != "")
 	{
+		$ext = explode('.', $_FILES['avatarFile']['name']);
+		$ftype = $ext[1];
+
+		$path = $uid.'_profile.'.$ftype;
+
+		move_uploaded_file($_FILES["avatarFile"]["tmp_name"], 'img/'. $path) or 
+		die( "ERROR: Unable to copy file");
+
 /*		$finfo = finfo_open(FILEINFO_MIME_TYPE);
 	    $mime=finfo_file($finfo, $_FILES['avatarFile']['name']);
 	    if($mime=='image/bmp' || $mime=='image/png' || $mime=='image/jpeg')
 	    {
-	    	$ext = '';
-	    	if ($mime=='image/bmp')
-	    	{
-	    		$ext = '.bmp';
-	    	}
-	    	else if ($mime=='image/png')
-	    	{
-	    		$ext = '.png';
-	    	}
-	    	else if ($mime=='image/jpeg')
-	    	{
-	    		$ext = '.jpg';
-	    	}
-
-			$path = $uid.'_profile'.$ext;
-
 			move_uploaded_file($_FILES["avatarFile"]["tmp_name"], 'img/'. $path) or 
 			die( "ERROR: Unable to copy file");
-
-			// rename($_FILES['file']['name'], $path);
 	    }
 	    finfo_close($finfo);*/
+
+	    $sql = mysql_query("UPDATE content SET avatar ='".$path."' WHERE userID = (SELECT userID FROM users WHERE email ='".$_SESSION['userId']."');");
 	}
 }
