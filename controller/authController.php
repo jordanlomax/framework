@@ -32,7 +32,7 @@ switch ( $_GET["a"] ) {
     	break;
 
     case "signup":
-        if (processAuth($_POST))
+        if (createAccount($_POST))
         {
             header("location: index.php");
         }

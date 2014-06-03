@@ -9,7 +9,12 @@ include("config/bootstrap.php");
 session_start();
 
 # Check if user is authenticated
-if("processAuth" != $_GET["a"] && !authCheck($_SESSION))
+if ("signup" == $_GET["a"])
+{
+    $_GET["q"] = "auth";
+    $_GET["a"] = "signup";
+}
+else if("processAuth" != $_GET["a"] && !authCheck($_SESSION))
 {
 	$_GET["q"] = "auth";
 	$_GET["a"] = "login";
